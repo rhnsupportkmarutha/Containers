@@ -1,0 +1,3 @@
+FROM registry.access.redhat.com/ubi8
+RUN yum install -y mlocate net-tools iproute iputils bind-utils wget curl && yum clean all
+CMD /bin/bash
