@@ -1,0 +1,8 @@
+FROM registry.access.redhat.com/ubi8
+RUN yum install -y  httpd openssh-clients net-tools iproute iputils bind-utils wget curl && yum clean all
+RUN echo -e "It works\n" > /var/www/html/index.html
+USER 1000
+RUN chown -R 1000:0 var/www/html/ && \
+    chown -R g=u /var/www/html/
+EXPOSE 8080
+CMD ["httpd", "-D", "FOREGROUND"]
